@@ -1,0 +1,19 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@import "tailwindcss";
+
+
+
+@theme {
+  --color-primary: #1890FF;
+  --color-secondary: #E6F7FF;
+  --color-tertiary: #F5F5F5;
+  --color-quaternary: #7E7E7E;
+  --color-quinary: #737373;
+  --color-senary: #262626;
+}
+
+
