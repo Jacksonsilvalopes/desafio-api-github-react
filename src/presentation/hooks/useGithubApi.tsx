@@ -11,43 +11,29 @@ function useGithubApi() {
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-
-        console.log('aqui')
+        
         e.preventDefault();
-        const user = await getPerfilGithub(isUser)  
 
-
-        if (user.location != undefined || user.location != null) {
+        getPerfilGithub(isUser).then(response => {
             navigate("/before/perfil", {
                 state: {
-                  url: user.url,
-                  location: user.location,
-                  followers: user.followers,
-                  name: user.name,
-                  avatar: user.avatar_url,
+                    url: response.url,
+                    location: response.location,
+                    followers: response.followers,
+                    name: response.name,
+                    avatar: response.avatar_url,
                 },
-              });
-            
-        } else {
-            notFound()
+            });
+
+        }).catch(() => {
+            navigate("/before/notfoundPerfil")
+        })
+    }  
+
+        return {
+            setIsUser,
+            handleSubmit,
         }
-
-    };
-
-
-  
-    const notFound = () => {
-        navigate("/before/notfoundPerfil")
     }
 
-
-    return {   
-
-        setIsUser,
-        handleSubmit,
-
-
-    }
-}
-
-export default useGithubApi
+    export default useGithubApi
